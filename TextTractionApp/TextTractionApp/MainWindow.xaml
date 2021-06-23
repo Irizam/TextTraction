@@ -5,8 +5,70 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TextTractionApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="MainWindow" Height="650" Width="900" WindowStartupLocation="CenterScreen" WindowStyle="None" BorderThickness="0.5" BorderBrush="{StaticResource AcquaProfonda}" ResizeMode="NoResize">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.ColumnSpan="3" Background="{StaticResource AcquaProfonda}">
+            <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button BorderThickness="0" Padding="0" Cursor="Arrow" Style="{StaticResource buttonWindows}">
+                    <materialDesign:PackIcon Kind="WindowMinimize" Foreground="White" Height="20" Width="30" Padding="0" Margin="0"/>
+                </Button>
+                <Button BorderThickness="0" Padding="0" Cursor="Arrow" Style="{StaticResource buttonWindows}">
+                    <materialDesign:PackIcon Kind="WindowMaximize" Foreground="White" Height="20" Width="30"/>
+                </Button>
+                <Button  BorderThickness="0" Padding="0" Style="{StaticResource buttonWindows}">
+                    <materialDesign:PackIcon Kind="WindowClose" Height="20" Width="30" Foreground="White"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="LOGO" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource TerraTerra}" />
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="3" Background="{StaticResource Acqua}"/>
+
+        <Label Grid.Row="1" Grid.Column="1" Content="TextTraction" FontSize="18" VerticalAlignment="Center" Foreground="{StaticResource TerraTerra}"/>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="3" Background="{StaticResource Grek}"/>
+
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}">
+                <Button x:Name="btnLoadImage" Style="{StaticResource buttonStyle}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalContentAlignment="Center" Height="30" Width="150" Content="Cargar Imagen" Foreground="{StaticResource AcquaProfonda}"/>
+            </materialDesign:TransitioningContent>
+
+            <Button x:Name="btnEditImage" Style="{StaticResource buttonStyle}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalContentAlignment="Center" Height="30" Width="150" Content="Editar" Foreground="{StaticResource AcquaProfonda}"/>
+
+            <Image Grid.Row="1" Grid.ColumnSpan="2" Margin="25 10 25 10"  />
+        </Grid>
+
+        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}" Grid.Row="2" Grid.Column="2">
+            <Button x:Name="btnExtractionImageText"  VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource buttonStyle}" Height="30" Width="150" Content="GO!!!" Foreground="{StaticResource AcquaProfonda}"/>
+        </materialDesign:TransitioningContent>
+
+        <Grid Grid.Row="3" Grid.ColumnSpan="3" Background="{StaticResource Acqua}"/>
+
+        <Grid Grid.Row="4" Grid.ColumnSpan="3" Background="{StaticResource AcquaProfonda}"/>
     </Grid>
 </Window>
