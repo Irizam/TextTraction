@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,46 @@ namespace TextTractionApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        BitmapImage biImage;
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        #region UI Elements
+        private void btnLoadImage_Click(object sender, RoutedEventArgs e)
+        {
+            UploadImage();
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMaximize_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Normal) this.WindowState = WindowState.Maximized;
+            else this.WindowState = WindowState.Normal;
+        }
+
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+        #endregion
+
+        private void UploadImage()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Imagenes (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+
+            if (ofd.ShowDialog() == true)
+            {
+                string fileName = ofd.FileName;
+                imgImage.Source = biImage = new BitmapImage(new Uri(fileName));
+            }
         }
     }
 }
