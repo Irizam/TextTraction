@@ -23,13 +23,13 @@
 
         <Grid Grid.Row="0" Grid.ColumnSpan="3" Background="{StaticResource AcquaProfonda}">
             <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button BorderThickness="0" Padding="0" Cursor="Arrow" Style="{StaticResource buttonWindows}">
+                <Button x:Name="btnMinimize" BorderThickness="0" Padding="0" Cursor="Arrow" Style="{StaticResource buttonWindows}" Click="btnMinimize_Click">
                     <materialDesign:PackIcon Kind="WindowMinimize" Foreground="White" Height="20" Width="30" Padding="0" Margin="0"/>
                 </Button>
-                <Button BorderThickness="0" Padding="0" Cursor="Arrow" Style="{StaticResource buttonWindows}">
+                <Button x:Name="btnMaximize" BorderThickness="0" Padding="0" Cursor="Arrow" Style="{StaticResource buttonWindows}" Click="btnMaximize_Click">
                     <materialDesign:PackIcon Kind="WindowMaximize" Foreground="White" Height="20" Width="30"/>
                 </Button>
-                <Button  BorderThickness="0" Padding="0" Style="{StaticResource buttonWindows}">
+                <Button x:Name="btnClose" BorderThickness="0" Padding="0" Style="{StaticResource buttonWindows}" Click="btnClose_Click">
                     <materialDesign:PackIcon Kind="WindowClose" Height="20" Width="30" Foreground="White"/>
                 </Button>
             </StackPanel>
@@ -39,7 +39,7 @@
 
         <Grid Grid.Row="1" Grid.ColumnSpan="3" Background="{StaticResource Acqua}"/>
 
-        <Label Grid.Row="1" Grid.Column="1" Content="TextTraction" FontSize="18" VerticalAlignment="Center" Foreground="{StaticResource TerraTerra}"/>
+        <Label Grid.Row="1" Grid.Column="1" Content="TextTraction" FontSize="18" VerticalAlignment="Center" Foreground="{StaticResource TerraTerra}" FontWeight="Bold" FontFamily="Century Gothic"/>
 
         <Grid Grid.Row="2" Grid.ColumnSpan="3" Background="{StaticResource Grek}"/>
 
@@ -48,23 +48,26 @@
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}">
-                <Button x:Name="btnLoadImage" Style="{StaticResource buttonStyle}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalContentAlignment="Center" Height="30" Width="150" Content="Cargar Imagen" Foreground="{StaticResource AcquaProfonda}"/>
+                <Button x:Name="btnLoadImage" Style="{StaticResource buttonStyle}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalContentAlignment="Center" Height="30" Width="150" Content="Cargar Imagen" Foreground="{StaticResource AcquaProfonda}" Click="btnLoadImage_Click" FontSize="16" FontFamily="Century Gothic" FontWeight="Bold"/>
             </materialDesign:TransitioningContent>
 
-            <Button x:Name="btnEditImage" Style="{StaticResource buttonStyle}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalContentAlignment="Center" Height="30" Width="150" Content="Editar" Foreground="{StaticResource AcquaProfonda}"/>
+            <Button x:Name="btnEditImage" Style="{StaticResource buttonStyle}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalContentAlignment="Center" Height="30" Width="150" Content="Editar" Foreground="{StaticResource AcquaProfonda}" FontSize="16" FontFamily="Century Gothic" FontWeight="Bold" Click="btnEditImage_Click"/>
 
-            <Image Grid.Row="1" Grid.ColumnSpan="2" Margin="25 10 25 10"  />
+            <Image x:Name="imgImage" Grid.Row="1" Grid.ColumnSpan="2" Margin="25 10 25 10"  />
         </Grid>
 
         <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}" Grid.Row="2" Grid.Column="2">
-            <Button x:Name="btnExtractionImageText"  VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource buttonStyle}" Height="30" Width="150" Content="GO!!!" Foreground="{StaticResource AcquaProfonda}"/>
+            <Button x:Name="btnExtractionImageText"  VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource buttonStyle}" Height="30" Width="150" Content="GO!!!" Foreground="{StaticResource AcquaProfonda}" FontSize="16" FontFamily="Century Gothic" FontWeight="Bold" Click="btnExtractionImageText_Click"/>
+        </materialDesign:TransitioningContent>
+
+        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}" Grid.Row="2" Grid.Column="2">
+            <Button x:Name="btnExtractionImageWithoutEdit"  VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource buttonStyle}" Height="30" Width="150" Content="GO2!!!" Foreground="{StaticResource AcquaProfonda}" FontSize="16" FontFamily="Century Gothic" FontWeight="Bold" Margin="0 100 0 0" Click="btnExtractionImageWithoutEdit_Click"/>
         </materialDesign:TransitioningContent>
 
         <Grid Grid.Row="3" Grid.ColumnSpan="3" Background="{StaticResource Acqua}"/>
