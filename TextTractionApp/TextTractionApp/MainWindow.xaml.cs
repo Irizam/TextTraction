@@ -31,11 +31,13 @@ namespace TextTractionApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        BitmapImage biImage, biEdit;
+        BitmapImage biImage, biEdit, biFinal;
 
         public MainWindow()
         {
             InitializeComponent();
+            textBoxOCR.IsEnabled = false;
+            textBoxOCRImageUpgrade.IsEnabled = false;
         }
 
         #region UI Elements
@@ -65,20 +67,19 @@ namespace TextTractionApp
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Imagenes (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
-
             if (ofd.ShowDialog() == true)
             {
                 string fileName = ofd.FileName;
                 imgImage.Source = biImage = new BitmapImage(new Uri(fileName));
+                textBoxOCRImageUpgrade.Clear();
+                textBoxOCR.Clear();
             }
         }
 
-        private void btnEditImage_Click(object sender, RoutedEventArgs e)
+        public BitmapImage upgradeImage()
         {
-            
-
+            // using a Gray Scale filter
             using (var grayscaleFilter = Grayscale.CommonAlgorithms.BT709.Apply(BitmapImageToBitmap(biImage)))
-            //using (var thresholdedBitmap = new Threshold(128).Apply(grayscaleFilter))
             {
                 // create instance of skew checker
                 DocumentSkewChecker skewChecker = new DocumentSkewChecker();
@@ -90,18 +91,21 @@ namespace TextTractionApp
                 // rotate image applying the filter
                 Bitmap rotatedImage = rotationFilter.Apply(grayscaleFilter);
 
+                // aplicatting a Threshold filter
                 BradleyLocalThresholding thresholdF = new BradleyLocalThresholding();
                 Bitmap thresholdImage = thresholdF.Apply(rotatedImage);
 
+                // Reducing brightness
                 BrightnessCorrection filterBright = new BrightnessCorrection(-40);
                 Bitmap brightnessImage = filterBright.Apply(thresholdImage);
 
+                // add Sharpen filter
                 Sharpen filterSharpen = new Sharpen();
                 Bitmap sharpenImage = filterSharpen.Apply(brightnessImage);
 
                 biEdit = ToBitmapImage(sharpenImage);
             }
-            imgImage.Source = biEdit;
+            return biEdit;
         }
 
         private void btnExtractionImageText_Click(object sender, RoutedEventArgs e)
@@ -112,10 +116,18 @@ namespace TextTractionApp
 
         public void ThreadProc()
         {
-            var img = new Bitmap(BitmapImageToBitmap(biEdit)); //Pix.LoadFromFile
+            
+            biFinal = upgradeImage();
+            var img = new Bitmap(BitmapImageToBitmap(biFinal)); //Pix.LoadFromFile
             var ocrengine = new TesseractEngine(@".\tessdata", "spa", EngineMode.Default);
             var res = ocrengine.Process(img);
-            MessageBox.Show(res.GetText());
+            this.Dispatcher.Invoke(() =>
+            {
+                textBoxOCRImageUpgrade.Clear();
+                textBoxOCRImageUpgrade.IsEnabled = true;
+                string resText = res.GetText();
+                textBoxOCRImageUpgrade.Text = resText.Trim();
+            });
             //SpeechSynthesizer speaker = new SpeechSynthesizer();
             //speaker.Rate = 1;
             //speaker.Volume = 100;
@@ -144,16 +156,25 @@ namespace TextTractionApp
 
         private void btnExtractionImageWithoutEdit_Click(object sender, RoutedEventArgs e)
         {
-            Thread t = new Thread(new ThreadStart(ThreadProc2));
+            Thread t = new Thread(new ThreadStart(ThreadProcWithoutEdit));
             t.Start();
         }
 
-        public void ThreadProc2()
+        public void ThreadProcWithoutEdit()
         {
+            
             var img = new Bitmap(BitmapImageToBitmap(biImage)); //Pix.LoadFromFile
             var ocrengine = new TesseractEngine(@".\tessdata", "spa", EngineMode.Default);
             var res = ocrengine.Process(img);
-            MessageBox.Show(res.GetText());
+            this.Dispatcher.Invoke(() =>
+            {
+                textBoxOCR.Clear();
+                textBoxOCR.IsEnabled = true;
+                string resText = res.GetText();
+                textBoxOCR.Text = resText.Trim();
+            });
+            
+            //MessageBox.Show(res.GetText());
             //SpeechSynthesizer speaker = new SpeechSynthesizer();
             //speaker.Rate = 1;
             //speaker.Volume = 100;

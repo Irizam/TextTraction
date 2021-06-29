@@ -6,19 +6,20 @@
         xmlns:local="clr-namespace:TextTractionApp"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="MainWindow" Height="650" Width="900" WindowStartupLocation="CenterScreen" WindowStyle="None" BorderThickness="0.5" BorderBrush="{StaticResource AcquaProfonda}" ResizeMode="NoResize">
+        Title="MainWindow" Height="650" Width="900" WindowStartupLocation="CenterScreen" WindowStyle="None" BorderThickness="0.5" BorderBrush="{StaticResource AcquaProfonda}" ResizeMode="NoResize" WindowState="Maximized" UseLayoutRounding="True">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="8"/>
             <RowDefinition Height="5"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Row="0" Grid.ColumnSpan="3" Background="{StaticResource AcquaProfonda}">
@@ -35,43 +36,72 @@
             </StackPanel>
         </Grid>
 
-        <Label Grid.Row="0" Grid.Column="0" Content="LOGO" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource TerraTerra}" />
-
+        <materialDesign:TransitioningContent Grid.Row="0">
+            <materialDesign:TransitioningContent.OpeningEffects>
+                <materialDesign:TransitionEffect Kind="FadeIn" />
+                <materialDesign:TransitionEffect Kind="SlideInFromRight" />
+            </materialDesign:TransitioningContent.OpeningEffects>
+            <Image Source="/images/logo.png" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2"/>
+        </materialDesign:TransitioningContent>
+        
         <Grid Grid.Row="1" Grid.ColumnSpan="3" Background="{StaticResource Acqua}"/>
 
-        <Label Grid.Row="1" Grid.Column="1" Content="TextTraction" FontSize="18" VerticalAlignment="Center" Foreground="{StaticResource TerraTerra}" FontWeight="Bold" FontFamily="Century Gothic"/>
+        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}" Grid.Row="1" Grid.Column="0">
+            <Button x:Name="btnLoadImage" Style="{StaticResource buttonStyle}" VerticalAlignment="Center" HorizontalContentAlignment="Center" Height="30" Width="150" Content="Cargar Imagen" Foreground="{StaticResource AcquaProfonda}" Click="btnLoadImage_Click" FontSize="16" FontFamily="Century Gothic" FontWeight="Bold"/>
+        </materialDesign:TransitioningContent>
 
         <Grid Grid.Row="2" Grid.ColumnSpan="3" Background="{StaticResource Grek}"/>
 
+        <Grid Grid.Row="3" Grid.Column="0" Background="{StaticResource Grek}"/>
+
+        <Image x:Name="imgImage" Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Margin="10 4 10 4"/>
+
+        <Grid Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Background="{StaticResource Grek}"/>
+
         <Grid Grid.Row="2" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
 
-            <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}">
-                <Button x:Name="btnLoadImage" Style="{StaticResource buttonStyle}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalContentAlignment="Center" Height="30" Width="150" Content="Cargar Imagen" Foreground="{StaticResource AcquaProfonda}" Click="btnLoadImage_Click" FontSize="16" FontFamily="Century Gothic" FontWeight="Bold"/>
+            <materialDesign:TransitioningContent Grid.Row="0">
+                <materialDesign:TransitioningContent.OpeningEffects>
+                    <materialDesign:TransitionEffect Kind="FadeIn" />
+                    <materialDesign:TransitionEffect Kind="SlideInFromLeft" />
+                </materialDesign:TransitioningContent.OpeningEffects>
+                <Label Content="Imagen Sin Editar" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Foreground="{StaticResource TerraTerra}"/>
             </materialDesign:TransitioningContent>
 
-            <Button x:Name="btnEditImage" Style="{StaticResource buttonStyle}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalContentAlignment="Center" Height="30" Width="150" Content="Editar" Foreground="{StaticResource AcquaProfonda}" FontSize="16" FontFamily="Century Gothic" FontWeight="Bold" Click="btnEditImage_Click"/>
-
-            <Image x:Name="imgImage" Grid.Row="1" Grid.ColumnSpan="2" Margin="25 10 25 10"  />
+            <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}" Grid.Row="1">
+                <Button x:Name="btnExtractionImageWithoutEdit"  VerticalAlignment="Top" HorizontalAlignment="Center" Style="{StaticResource buttonStyle}" Height="30" Width="150" Content="GO!!!" Foreground="{StaticResource AcquaProfonda}" FontSize="16" FontFamily="Century Gothic" FontWeight="Bold" Click="btnExtractionImageWithoutEdit_Click"/>
+            </materialDesign:TransitioningContent>
         </Grid>
 
-        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}" Grid.Row="2" Grid.Column="2">
-            <Button x:Name="btnExtractionImageText"  VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource buttonStyle}" Height="30" Width="150" Content="GO!!!" Foreground="{StaticResource AcquaProfonda}" FontSize="16" FontFamily="Century Gothic" FontWeight="Bold" Click="btnExtractionImageText_Click"/>
-        </materialDesign:TransitioningContent>
+        <Grid Grid.Row="3" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}" Grid.Row="2" Grid.Column="2">
-            <Button x:Name="btnExtractionImageWithoutEdit"  VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource buttonStyle}" Height="30" Width="150" Content="GO2!!!" Foreground="{StaticResource AcquaProfonda}" FontSize="16" FontFamily="Century Gothic" FontWeight="Bold" Margin="0 100 0 0" Click="btnExtractionImageWithoutEdit_Click"/>
-        </materialDesign:TransitioningContent>
+            <materialDesign:TransitioningContent Grid.Row="0">
+                <materialDesign:TransitioningContent.OpeningEffects>
+                    <materialDesign:TransitionEffect Kind="FadeIn" />
+                    <materialDesign:TransitionEffect Kind="SlideInFromRight" />
+                </materialDesign:TransitioningContent.OpeningEffects>
+                <Label Content="Imagen Editada" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Foreground="{StaticResource TerraTerra}"/>
+            </materialDesign:TransitioningContent>
 
-        <Grid Grid.Row="3" Grid.ColumnSpan="3" Background="{StaticResource Acqua}"/>
+            <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}" Grid.Row="1">
+                <Button x:Name="btnExtractionImageText"  VerticalAlignment="Top" HorizontalAlignment="Center" Style="{StaticResource buttonStyle}" Height="30" Width="150" Content="GO!!!" Foreground="{StaticResource AcquaProfonda}" FontSize="16" FontFamily="Century Gothic" FontWeight="Bold" Click="btnExtractionImageText_Click"/>
+            </materialDesign:TransitioningContent>
+        </Grid>
 
-        <Grid Grid.Row="4" Grid.ColumnSpan="3" Background="{StaticResource AcquaProfonda}"/>
+        <TextBox x:Name="textBoxOCR" Grid.Row="2" Grid.Column="2" Margin="6 2 6 2" Style="{StaticResource textBoxStyle}" BorderBrush="{StaticResource Terra}" Background="Transparent" Foreground="{StaticResource TerraTerra}" IsReadOnly="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" FontSize="16" />
+
+        <TextBox x:Name="textBoxOCRImageUpgrade" Grid.Row="3" Grid.Column="2" Margin="6 2 6 2" Style="{StaticResource textBoxStyle}" BorderBrush="{StaticResource Terra}" Background="Transparent" Foreground="{StaticResource TerraTerra}" IsReadOnly="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" FontSize="16" />
+
+        <Grid Grid.Row="4" Grid.ColumnSpan="3" Background="{StaticResource Acqua}"/>
+
+        <Grid Grid.Row="5" Grid.ColumnSpan="3" Background="{StaticResource AcquaProfonda}"/>
     </Grid>
 </Window>
