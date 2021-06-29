@@ -6,7 +6,6 @@ C:\Users\WIN10\Desktop\TextTraction\TextTractionApp\TextTractionApp\bin\Debug\Ma
 C:\Users\WIN10\Desktop\TextTraction\TextTractionApp\TextTractionApp\bin\Debug\MaterialDesignColors.pdb
 C:\Users\WIN10\Desktop\TextTraction\TextTractionApp\TextTractionApp\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\WIN10\Desktop\TextTraction\TextTractionApp\TextTractionApp\bin\Debug\MaterialDesignThemes.Wpf.xml
-C:\Users\WIN10\Desktop\TextTraction\TextTractionApp\TextTractionApp\obj\Debug\TextTractionApp.csprojAssemblyReference.cache
 C:\Users\WIN10\Desktop\TextTraction\TextTractionApp\TextTractionApp\obj\Debug\GeneralStyles.baml
 C:\Users\WIN10\Desktop\TextTraction\TextTractionApp\TextTractionApp\obj\Debug\MainWindow.g.cs
 C:\Users\WIN10\Desktop\TextTraction\TextTractionApp\TextTractionApp\obj\Debug\App.g.cs
