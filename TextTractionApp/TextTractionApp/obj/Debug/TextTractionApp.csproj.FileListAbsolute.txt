@@ -60,3 +60,4 @@ C:\Users\WIN10\Desktop\TextTraction\TextTractionApp\TextTractionApp\bin\Debug\AF
 C:\Users\WIN10\Desktop\TextTraction\TextTractionApp\TextTractionApp\bin\Debug\AForge.Math.xml
 C:\Users\WIN10\Desktop\TextTraction\TextTractionApp\TextTractionApp\bin\Debug\AForge.Video.xml
 C:\Users\WIN10\Desktop\TextTraction\TextTractionApp\TextTractionApp\bin\Debug\AForge.Vision.xml
+C:\Users\WIN10\Desktop\TextTraction\TextTractionApp\TextTractionApp\obj\Debug\TextTractionApp.csprojAssemblyReference.cache

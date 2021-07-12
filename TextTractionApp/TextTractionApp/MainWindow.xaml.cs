@@ -128,11 +128,6 @@ namespace TextTractionApp
                 string resText = res.GetText();
                 textBoxOCRImageUpgrade.Text = resText.Trim();
             });
-            //SpeechSynthesizer speaker = new SpeechSynthesizer();
-            //speaker.Rate = 1;
-            //speaker.Volume = 100;
-            //speaker.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("en-en"));
-            //speaker.Speak(res.GetText());
         }
 
         #region BitmapsHelpers
@@ -171,15 +166,8 @@ namespace TextTractionApp
                 textBoxOCR.Clear();
                 textBoxOCR.IsEnabled = true;
                 string resText = res.GetText();
-                textBoxOCR.Text = resText.Trim();
+                textBoxOCR.Text = resText;
             });
-            
-            //MessageBox.Show(res.GetText());
-            //SpeechSynthesizer speaker = new SpeechSynthesizer();
-            //speaker.Rate = 1;
-            //speaker.Volume = 100;
-            //speaker.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("en-en"));
-            //speaker.Speak(res.GetText());
         }
 
         private Bitmap BitmapImageToBitmap(BitmapImage bitmapImg)
