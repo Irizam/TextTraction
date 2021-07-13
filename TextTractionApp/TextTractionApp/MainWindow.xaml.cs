@@ -110,8 +110,15 @@ namespace TextTractionApp
 
         private void btnExtractionImageText_Click(object sender, RoutedEventArgs e)
         {
-            Thread t = new Thread(new ThreadStart(ThreadProc));
-            t.Start();
+            if (imgImage.Source!=null)
+            {
+                Thread t = new Thread(new ThreadStart(ThreadProc));
+                t.Start();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, cargue una imagen");
+            }
         }
 
         public void ThreadProc()
@@ -151,8 +158,16 @@ namespace TextTractionApp
 
         private void btnExtractionImageWithoutEdit_Click(object sender, RoutedEventArgs e)
         {
-            Thread t = new Thread(new ThreadStart(ThreadProcWithoutEdit));
-            t.Start();
+            if (imgImage.Source != null)
+            {
+                Thread t = new Thread(new ThreadStart(ThreadProcWithoutEdit));
+                t.Start();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, cargue una imagen");
+            }
+            
         }
 
         public void ThreadProcWithoutEdit()

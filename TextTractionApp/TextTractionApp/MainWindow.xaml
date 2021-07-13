@@ -73,7 +73,7 @@
             </materialDesign:TransitioningContent>
 
             <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}" Grid.Row="1">
-                <Button x:Name="btnExtractionImageWithoutEdit"  VerticalAlignment="Top" HorizontalAlignment="Center" Style="{StaticResource buttonStyle}" Height="30" Width="150" Content="GO!!!" Foreground="{StaticResource AcquaProfonda}" FontSize="16" FontFamily="Century Gothic" FontWeight="Bold" Click="btnExtractionImageWithoutEdit_Click"/>
+                <Button x:Name="btnExtractionImageWithoutEdit"  VerticalAlignment="Top" HorizontalAlignment="Center" Style="{StaticResource buttonStyle}" Height="30" Width="150" Content="EXTRAER" Foreground="{StaticResource AcquaProfonda}" FontSize="16" FontFamily="Century Gothic" FontWeight="Bold" Click="btnExtractionImageWithoutEdit_Click"/>
             </materialDesign:TransitioningContent>
         </Grid>
 
@@ -92,7 +92,7 @@
             </materialDesign:TransitioningContent>
 
             <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}" Grid.Row="1">
-                <Button x:Name="btnExtractionImageText"  VerticalAlignment="Top" HorizontalAlignment="Center" Style="{StaticResource buttonStyle}" Height="30" Width="150" Content="GO!!!" Foreground="{StaticResource AcquaProfonda}" FontSize="16" FontFamily="Century Gothic" FontWeight="Bold" Click="btnExtractionImageText_Click"/>
+                <Button x:Name="btnExtractionImageText"  VerticalAlignment="Top" HorizontalAlignment="Center" Style="{StaticResource buttonStyle}" Height="30" Width="150" Content="EXTRAER" Foreground="{StaticResource AcquaProfonda}" FontSize="16" FontFamily="Century Gothic" FontWeight="Bold" Click="btnExtractionImageText_Click"/>
             </materialDesign:TransitioningContent>
         </Grid>
 
